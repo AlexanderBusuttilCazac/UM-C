@@ -4,8 +4,7 @@ float sub(float num1, float num2);
 float mul(float num1, float num2);
 float div(float num1, float num2);
 
-int main (){
-	z
+int main (){//eee
 	float num1, num2;
 	
 	printf("Please enter number 1\nNumber 1:  ");

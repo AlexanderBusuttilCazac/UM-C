@@ -27,8 +27,12 @@ int main(){
 	
 	// data entry
 	for(int i=0; i<=9; i++){
+		
+		
 		printf("\n\nPlease enter person %i's first name: ", (i+1));
 		scanf("%10s", firstName[i]);
+		
+		scanf("%lf", &DSalary);
 		
 		printf("\nPlease enter person %i's last name: ", (i+1)); //? string continuing to next question
 		scanf("%10s", lastName[i]);
@@ -37,8 +41,12 @@ int main(){
 		scanf("%i", &age[i]);
 		
 		printf("\nPlease enter person %i's monthly pay-cheque salary: €", (i+1));
-		if(highAccuracy){ //high accuracy
-			scanf("%9.2lf", &DSalary[i]); // NOT SCANNING
+		
+		scanf("%-9.2i", &DSalary[i]);
+		printf("%-9.2lf", DSalary[i]);
+		
+		if(highAccuracy == true){ //high accuracy
+			scanf("%i", &DSalary[i]); // NOT SCANNING
 			DTotalSalary += DSalary[i];
 			printf("%9.2f", DSalary[i]);
 		}else{ // low accuracy
