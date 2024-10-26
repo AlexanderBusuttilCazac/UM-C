@@ -1,4 +1,4 @@
-#include <stdio.h> // UNFINISHED CODE
+#include <stdio.h>
 int main() {
 	
 	// case 1 using double
@@ -39,6 +39,6 @@ int main() {
 	printf("Hexadecimal: %#o.\n", value4);
 	printf("Octal Integer: %#x.\n", value4);
 	
-	// 4) The results are $0.0 because 'int' takes less width in bits/bytes than float and double, and therefore they overflow. right?
-	// 5) A (?) placeholder symbol is printed. right?
+	// 4) The results are $0.0 because 'int' takes less width in bits/bytes than float and double, and therefore they overflow.
+	// 5) A (?) placeholder symbol is printed.
 }
