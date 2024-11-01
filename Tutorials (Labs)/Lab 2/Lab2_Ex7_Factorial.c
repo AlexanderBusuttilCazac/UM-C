@@ -3,7 +3,7 @@ int main(){
 	int num, ans = 1;
 	
 	// input
-	printf("\nPlease enter the number you would like to compute factorial with: ");
+	printf("\nPlease enter the number you would like to compute factorial on: ");
 	scanf("%i", &num);
 	
 	while(num > 1){ // loop to calculate
