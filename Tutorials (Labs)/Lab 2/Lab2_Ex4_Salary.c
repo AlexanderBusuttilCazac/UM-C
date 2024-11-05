@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdbool.h>
-#define INFINITE 1 // for infinite loop with break;
 int main(){
 	char firstName[10][20], lastName[10][20];
 	int age[10];
@@ -22,17 +21,17 @@ int main(){
 		}
 		
 		printf("\nPlease enter either 'Y' or 'N'.\n");
-	}while(INFINITE);
+	}while(1);
 	
 	
 	// data entry
 	for(int i=0; i<=9; i++){
 		
 		printf("\n\nPlease enter person %i's first name: ", (i+1));
-		scanf("%10s", firstName[i]);
+		scanf("%10s%*s", firstName[i]);
 		
 		printf("Please enter person %i's last name: ", (i+1));
-		scanf("%10s", lastName[i]);
+		scanf("%10s%*s", lastName[i]);
 		
 		printf("Please enter person %i's age: ", (i+1));
 		scanf("%i", &age[i]);
