@@ -6,7 +6,7 @@
 int main(){
 	FILE *input; 
 	
-	input = fopen("input7.txt", "r");
+	input = fopen("input8.txt", "r");
 	if(input == NULL){
 		perror("Input file corrupted or not found");
 		fclose(input);
@@ -26,11 +26,8 @@ int main(){
 	}
 	fclose(input);
 	
-	int countErrors;
-	int wordBeginningIndex;
-	bool firstCharIsAlpha = true;
-	bool hasHyphen = false;
-	bool hasUpper = false;
+	int countErrors, wordBeginningIndex, previousWordBeginningIndex;
+	bool firstCharIsAlpha = true, hasHyphen = false, hasUpper = false, punctAfterSpace = false, repeatedSpace = false;
 	
 	for(int i=0; i<endOfArray; i++){
 		if(text[i] == ' '){
@@ -51,17 +48,36 @@ int main(){
 					printf("\nWARNING: \"");
 					for(int j=0; j<(i-wordBeginningIndex); j++) printf("%c", text[j+wordBeginningIndex]);
 					printf("\" is larger than 10 characters and does not include a hyphen.");
-					countErrors++;	
+					countErrors++;
 				}
 			}
+			if(punctAfterSpace){
+				printf("\nWARNING: There is punctuation right after a space within: \"");
+				for(int j=0; j<(i-previousWordBeginningIndex); j++) printf("%c", text[j+previousWordBeginningIndex]);
+				printf("\".");
+				punctAfterSpace = false;
+				countErrors++;	
+			}
+			if(repeatedSpace){
+				printf("\nWARNING: There is at least one extra space within: \"");
+				for(int j=0; j<(i-previousWordBeginningIndex); j++) printf("%c", text[j+previousWordBeginningIndex]);
+				printf("\".");
+				repeatedSpace = false;
+				countErrors++;	
+			}
+			
 			firstCharIsAlpha = true;
 			hasUpper = false;
 			hasHyphen = false;
+			previousWordBeginningIndex = wordBeginningIndex;
 			wordBeginningIndex = i+1;
+			
 		}else{
 			if(i == wordBeginningIndex && !isalpha(text[i])) firstCharIsAlpha = false;
 			if(i != wordBeginningIndex && isupper(text[i])) hasUpper = true;
 			if(text[i] == '-') hasHyphen = true;
+			if(i == wordBeginningIndex && text[i] == ('.' || ',' || '!' || '?')) punctAfterSpace = true;
+			if(text[i-1] == ' ' && text[i] == ' ') repeatedSpace = true;
 		}
 	}
 	
