@@ -2,25 +2,20 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+int Fibonacci(int n);
 int iFibonacci(int n);
 int rFibonacci(int n);
+int GCD(int num1, int num2);
 int rGCD(int num1, int num2);
 int iGCD(int num1, int num2);
 
-int main(){
-	int in1, in2;
-	
-	printf("Enter number for fibonacci sequence: ");
-	scanf("%i", &in1);
-	printf("\nFibonacci iterative ans = %i", iFibonacci(in1));
-	printf("\nFibonacci recursive ans = %i", rFibonacci(in1));
-	
-	printf("\n\nEnter number 1 for greatest common divisor: ");
-	scanf("%i", &in1);
-	printf("\nEnter number 2 for greatest common divisor: ");
-	scanf("%i", &in2);
-	printf("\nGCD iterative ans = %i", iGCD(in1, in2));
-	printf("\nGCD recursive ans = %i\n\n", rGCD(in1, in2));
+int Fibonacci(int n){
+	if(iFibonacci(n) == rFibonacci(n)) return rFibonacci(n);
+	else return -1;
+}
+int GCD(int num1, int num2){
+	if(rGCD(num1, num2) == iGCD(num1, num2)) return rGCD(num1, num2);
+	else return -1;
 }
 
 int iFibonacci(int n){

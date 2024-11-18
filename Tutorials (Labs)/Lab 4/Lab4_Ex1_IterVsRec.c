@@ -1,14 +1,12 @@
 #include <stdio.h>
 
+long factorial(int n);
 long fact(int n);
 long rfact(int n);
-int main(){
-	
-	// In the iterative function, A new stack is induced after every iteration.
-	printf("\nITERATIVE ANS: %d",  fact(5));
-	
-	// In the iterative function, the same stack grows bigger and deeper for every recursion.
-	printf("\nITERATIVE ANS: %d", rfact(5));
+
+long factorial(int n){
+    if(fact(n) == rfact(n)) return fact(n);
+    else return -1;
 }
 
 // Iterative function
