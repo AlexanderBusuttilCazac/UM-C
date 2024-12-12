@@ -23,7 +23,7 @@ int main(){
 	while(1){
 		if(!firstTime) clearBuffer();
 		firstTime = 0;
-		fputs("\n---MENU---\n1. Add Employee\n2. Edit Employee\n3. Remove Employee\n4. Print Employees\n5. Quit Program\n\nSelection: ", stdout);
+		fputs("\n\n\n---MENU---\n1. Add Employee\n2. Edit Employee\n3. Remove Employee\n4. Print Employees\n5. Quit Program\n\nSelection: ", stdout);
 		char input = fgetc(stdin);
 		clearBuffer();
 		
@@ -77,30 +77,15 @@ void AddEmployee(struct Employee *employees, int nextEmp){
 }
 
 void editEmployee(struct Employee *employees, int index){
+	printf("\n\n                 --------- EMPLOYEES ---------"                            );
+	printf( "\n    [   ID   ][      NAME     ][            SURNAME           ][Mon.Salary]");
+	for(int i=0; i<index; i++) printf("\n%2i. [%-8s][%-15s][%-30s][€%-9.2f]", i+1, employees[i].ID, employees[i].name, employees[i].surname, employees[i].salary);
+	
 	while(1){
-		fputs("\n---MENU---\n1. Add Employee\n2. Remove Employee\n3. Edit Employee\n4. Print by ID\n5. Print by surname\n\nSelection: ", stdout);
+		fputs("\nPlease choose an ID to edit: ", stdout);
+		char input[8];
+		fgets(input, 8, stdin);
 		clearBuffer();
-		char input = fgetc(stdin);
-		
-		switch(input){
-			case '1':
-				AddEmployee(employees, index);
-				
-				break;
-			case '2':
-				
-			case '3':
-				
-			case '4':
-				
-			case '5':
-				
-			case '6':
-				exit(0);
-			default: 
-				fputs("\nPlease enter a number between 1 and 5.\n", stdout);
-				break;
-		}
 	}
 }
 
