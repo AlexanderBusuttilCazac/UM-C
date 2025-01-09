@@ -28,9 +28,9 @@ int main(){
 	
 	int countErrors;
 	int wordBeginningIndex;
-	bool firstCharIsAlpha = true;
-	bool hasHyphen = false;
-	bool hasUpper = false;
+	bool firstCharIsAlpha = 1;
+	bool hasHyphen = 0;
+	bool hasUpper = 0;
 	
 	for(int i=0; i<endOfArray; i++){
 		if(text[i] == ' '){
@@ -54,14 +54,14 @@ int main(){
 					countErrors++;	
 				}
 			}
-			firstCharIsAlpha = true;
-			hasUpper = false;
-			hasHyphen = false;
+			firstCharIsAlpha = 1;
+			hasUpper = 0;
+			hasHyphen = 0;
 			wordBeginningIndex = i+1;
 		}else{
-			if(i == wordBeginningIndex && !isalpha(text[i])) firstCharIsAlpha = false;
-			if(i != wordBeginningIndex && isupper(text[i])) hasUpper = true;
-			if(text[i] == '-') hasHyphen = true;
+			if(i == wordBeginningIndex && !isalpha(text[i])) firstCharIsAlpha = 0;
+			if(i != wordBeginningIndex && isupper(text[i])) hasUpper = 1;
+			if(text[i] == '-') hasHyphen = 1;
 		}
 	}
 	
