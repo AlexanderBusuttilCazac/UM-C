@@ -5,7 +5,7 @@ int main(){
 	int age[10];
 	float FSalary[10], FTotalSalary; //		low accuracy
 	double DSalary[10], DTotalSalary; //	high accuracy
-	bool highAccuracy = true;
+	bool highAccuracy = 1;
 	
 	// infinite loop with break case
 	do{
@@ -17,7 +17,7 @@ int main(){
 			printf("You have chosen high accuracy.\n"); break;
 		}else if(tempAccuracy == 'N' || tempAccuracy == 'n'){
 			printf("You have chosen low accuracy.\n"); 
-			highAccuracy = false; break;
+			highAccuracy = 0; break;
 		}
 		
 		printf("\nPlease enter either 'Y' or 'N'.\n");

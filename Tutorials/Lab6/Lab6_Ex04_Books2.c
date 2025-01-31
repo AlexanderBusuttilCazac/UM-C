@@ -124,22 +124,15 @@ int main(void){
 	fwrite(&book2, sizeof(Book), 1, fp);
 	fclose(fp);
 	
-	BookIndex *indexes = NULL;
-	int count = 0;
+	BookIndex *indexes;
+	int count;
 	
 	// Load indexes from file if available, otherwise generate them
-	fp = fopen("book.dat", "rb");
-	if(fp != NULL){
-		fclose(fp);
-		loadIndexes("book.dat", &indexes, &count);
+	if(fopen("book.idx", "rb") != NULL){
+		loadIndexes("book.idx", &indexes, &count);
 	}else{
 		generateIndexes("book.dat", &indexes, &count);
-		saveIndexes("book.dat", indexes, count);
-	}
-	
-	if (indexes == NULL) {
-		fprintf(stderr, "Failed to load or generate indexes.\n");
-		return 1;
+		saveIndexes("book.idx", indexes, count);
 	}
 	
 	printf("Books sorted by title (ascending):\n");
@@ -155,5 +148,4 @@ int main(void){
 	displayBooks("book.dat", indexes, count);
 	
 	free(indexes);
-	return 0;
 }

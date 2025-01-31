@@ -1,4 +1,4 @@
-#include <stdio.h> // UNFINISHED CODE
+#include <stdio.h> // C
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>

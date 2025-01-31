@@ -1,11 +1,11 @@
-#include <stdio.h> // UNFINISHED CODE
+#include <stdio.h> // C
 #include <string.h>
 #include <stdbool.h>
 
 int main(){
 	char PIN[4] = "4836";
 	char input[4];
-	bool isDifferent = true;
+	bool isDifferent = 1;
 	
 	for(int i=5; i>0; i--){		
 		printf("\n\nPlease enter your 4-digit PIN. You have %i tries left.\nPIN: ", i);
@@ -13,7 +13,7 @@ int main(){
 		
 		for(int i=0; i<4; i++){
 			if(PIN[i] != input[i]){
-				isDifferent = false;
+				isDifferent = 0;
 				break;
 			}
 		}

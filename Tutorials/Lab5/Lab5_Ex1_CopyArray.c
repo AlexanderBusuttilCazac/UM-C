@@ -33,7 +33,7 @@ int main() {
 	
     int* copiedArray = copyArray(original, size);
 	
-    printf("Copied array:   ");
+    printf("Copied array: ");
     for (int i = 0; i < size; i++) {
         printf("%d ", copiedArray[i]);
     }

@@ -27,7 +27,7 @@ int main(){
 	fclose(input);
 	
 	int countErrors, wordBeginningIndex, previousWordBeginningIndex;
-	bool firstCharIsAlpha = true, hasHyphen = false, hasUpper = false, punctAfterSpace = false, repeatedSpace = false;
+	bool firstCharIsAlpha = 1, hasHyphen = 0, hasUpper = 0, punctAfterSpace = 0, repeatedSpace = 0;
 	
 	for(int i=0; i<endOfArray; i++){
 		if(text[i] == ' '){
@@ -55,29 +55,29 @@ int main(){
 				printf("\nWARNING: There is punctuation right after a space within: \"");
 				for(int j=0; j<(i-previousWordBeginningIndex); j++) printf("%c", text[j+previousWordBeginningIndex]);
 				printf("\".");
-				punctAfterSpace = false;
+				punctAfterSpace = 0;
 				countErrors++;	
 			}
 			if(repeatedSpace){
 				printf("\nWARNING: There is at least one extra space within: \"");
 				for(int j=0; j<(i-previousWordBeginningIndex); j++) printf("%c", text[j+previousWordBeginningIndex]);
 				printf("\".");
-				repeatedSpace = false;
+				repeatedSpace = 0;
 				countErrors++;	
 			}
 			
-			firstCharIsAlpha = true;
-			hasUpper = false;
-			hasHyphen = false;
+			firstCharIsAlpha = 1;
+			hasUpper = 0;
+			hasHyphen = 0;
 			previousWordBeginningIndex = wordBeginningIndex;
 			wordBeginningIndex = i+1;
 			
 		}else{
-			if(i == wordBeginningIndex && !isalpha(text[i])) firstCharIsAlpha = false;
-			if(i != wordBeginningIndex && isupper(text[i])) hasUpper = true;
-			if(text[i] == '-') hasHyphen = true;
-			if(i == wordBeginningIndex && text[i] == ('.' || ',' || '!' || '?')) punctAfterSpace = true;
-			if(text[i-1] == ' ' && text[i] == ' ') repeatedSpace = true;
+			if(i == wordBeginningIndex && !isalpha(text[i])) firstCharIsAlpha = 0;
+			if(i != wordBeginningIndex && isupper(text[i])) hasUpper = 1;
+			if(text[i] == '-') hasHyphen = 1;
+			if(i == wordBeginningIndex && text[i] == ('.' || ',' || '!' || '?')) punctAfterSpace = 1;
+			if(text[i-1] == ' ' && text[i] == ' ') repeatedSpace = 1;
 		}
 	}
 	
